@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Roboto+Flex:opsz,wdth,wght@8..144,75..150,300..800&display=swap" rel="stylesheet">
   <meta name="theme-color" content="#0c0906">
   <link rel="stylesheet" href="styles.css?v=20260919-2">
-  <link rel="stylesheet" href="fmcg.css?v=20260919-2">
+  <link rel="stylesheet" href="fmcg.css?v=20260919-3">
   <link rel="stylesheet" href="study-nav.css?v=20260919-1">
 </head>
 <body>
@@ -173,36 +173,34 @@
       <h2 class="display small">A static view of <span class="accent">industrial cost medians.</span></h2>
       <p class="lede">This is an in-page planning graphic—not a linked map. It compares six relevant manufacturing/sourcing states using current market meat observations, current/approved industrial energy tariffs where available, and a planning median monthly factory wage.</p>
       <div class="india-map-card top-gap">
-        <div class="india-map-visual" aria-label="India cost comparison map">
-          <div class="india-outline-wrap">
-            <img class="india-outline-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/India_outline.svg/1758px-India_outline.svg.png" alt="Outline map of India">
-            <span class="india-state-dot dot-gj" aria-hidden="true"></span>
-            <span class="india-state-dot dot-mh" aria-hidden="true"></span>
-            <span class="india-state-dot dot-tg" aria-hidden="true"></span>
-            <span class="india-state-dot dot-ap" aria-hidden="true"></span>
-            <span class="india-state-dot dot-ka" aria-hidden="true"></span>
-            <span class="india-state-dot dot-tn" aria-hidden="true"></span>
-
-            <article class="map-callout callout-gj"><b>Gujarat</b><span>₹7.5/kWh</span><span>Beef ₹185k/t</span><span>Chicken ₹260k/t</span><span>Wage ₹14k/mo</span></article>
-            <article class="map-callout callout-mh"><b>Maharashtra</b><span>₹8.44/kWh</span><span>Beef ₹160k/t</span><span>Chicken ₹230k/t</span><span>Wage ₹13.9k/mo</span></article>
-            <article class="map-callout callout-ka"><b>Karnataka</b><span>₹8.8/kWh</span><span>Beef ₹160k/t</span><span>Chicken ₹230k/t</span><span>Wage ₹15.7k/mo</span></article>
-            <article class="map-callout callout-tg"><b>Telangana</b><span>₹7.70/kWh</span><span>Beef ₹195k/t</span><span>Chicken ₹240k/t</span><span>Wage ₹16k/mo</span></article>
-            <article class="map-callout callout-ap"><b>Andhra Pradesh</b><span>₹8.2/kWh</span><span>Beef ₹195k/t</span><span>Chicken ₹250k/t</span><span>Wage ₹15k/mo</span></article>
-            <article class="map-callout callout-tn"><b>Tamil Nadu</b><span>₹8.0/kWh</span><span>Beef ₹175k/t</span><span>Chicken ₹250k/t</span><span>Wage ₹16k/mo</span></article>
+        <div class="india-map-panel">
+          <div class="india-map-stage" aria-label="India with selected manufacturing-cost benchmark states">
+            <img class="india-outline-img" src="assets/india-outline.svg" alt="Outline map of India">
+            <span class="state-pin pin-gj"><i></i><b>GJ</b></span>
+            <span class="state-pin pin-mh"><i></i><b>MH</b></span>
+            <span class="state-pin pin-ka"><i></i><b>KA</b></span>
+            <span class="state-pin pin-tg"><i></i><b>TG</b></span>
+            <span class="state-pin pin-ap"><i></i><b>AP</b></span>
+            <span class="state-pin pin-tn"><i></i><b>TN</b></span>
           </div>
-          <div class="india-map-mobile-values" aria-label="State cost values">
-            <article><b>Gujarat</b><span>₹7.5/kWh · Beef ₹185k/t · Chicken ₹260k/t · Wage ₹14k/mo</span></article>
-            <article><b>Maharashtra</b><span>₹8.44/kWh · Beef ₹160k/t · Chicken ₹230k/t · Wage ₹13.9k/mo</span></article>
-            <article><b>Telangana</b><span>₹7.70/kWh · Beef ₹195k/t · Chicken ₹240k/t · Wage ₹16k/mo</span></article>
-            <article><b>Andhra Pradesh</b><span>₹8.2/kWh · Beef ₹195k/t · Chicken ₹250k/t · Wage ₹15k/mo</span></article>
-            <article><b>Karnataka</b><span>₹8.8/kWh · Beef ₹160k/t · Chicken ₹230k/t · Wage ₹15.7k/mo</span></article>
-            <article><b>Tamil Nadu</b><span>₹8.0/kWh · Beef ₹175k/t · Chicken ₹250k/t · Wage ₹16k/mo</span></article>
-          </div>
+          <div class="map-caption">Selected industrial benchmark states · markers are indicative state positions</div>
         </div>
-        <div class="map-note">
-          <div class="kicker">How to read this</div>
-          <p><strong>Electricity</strong> is a rounded industrial planning energy rate; demand charges, wheeling, fuel adjustments, time-of-day charges and taxes can change the effective bill. <strong>Meat prices</strong> are market observations, not factory RFQs. <strong>Wage</strong> is a monthly planning median informed by current state wage floors/ranges; job classification and statutory benefits apply.</p>
-          <p class="chart-note">The purpose is directional site screening. It is not a statutory tariff or payroll calculator. India outline: Wikimedia Commons, CC BY-SA 3.0.</p>
+
+        <div class="india-cost-panel">
+          <div class="kicker">State cost snapshot</div>
+          <div class="india-cost-list">
+            <article><div><b>Gujarat</b><small>GJ</small></div><span>₹7.5/kWh</span><span>Beef ₹185k/t</span><span>Chicken ₹260k/t</span><span>Wage ₹14k/mo</span></article>
+            <article><div><b>Maharashtra</b><small>MH</small></div><span>₹8.44/kWh</span><span>Beef ₹160k/t</span><span>Chicken ₹230k/t</span><span>Wage ₹13.9k/mo</span></article>
+            <article><div><b>Telangana</b><small>TG</small></div><span>₹7.70/kWh</span><span>Beef ₹195k/t</span><span>Chicken ₹240k/t</span><span>Wage ₹16k/mo</span></article>
+            <article><div><b>Andhra Pradesh</b><small>AP</small></div><span>₹8.2/kWh</span><span>Beef ₹195k/t</span><span>Chicken ₹250k/t</span><span>Wage ₹15k/mo</span></article>
+            <article><div><b>Karnataka</b><small>KA</small></div><span>₹8.8/kWh</span><span>Beef ₹160k/t</span><span>Chicken ₹230k/t</span><span>Wage ₹15.7k/mo</span></article>
+            <article class="focus-state"><div><b>Tamil Nadu</b><small>TN</small></div><span>₹8.0/kWh</span><span>Beef ₹175k/t</span><span>Chicken ₹250k/t</span><span>Wage ₹16k/mo</span></article>
+          </div>
+          <div class="map-note">
+            <div class="kicker">How to read this</div>
+            <p><strong>Electricity</strong> is a rounded industrial planning energy rate; demand charges and other adjustments can change the effective bill. <strong>Meat prices</strong> are market observations, not factory RFQs. <strong>Wage</strong> is a monthly planning median; statutory classification and benefits still apply.</p>
+            <p class="chart-note">Directional site screening only—not a statutory tariff or payroll calculator. Country outline is packaged locally with the site from a public-domain Natural Earth-derived India SVG.</p>
+          </div>
         </div>
       </div>
     </section>
