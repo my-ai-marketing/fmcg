@@ -162,12 +162,15 @@ section[id]{scroll-margin-top:18px}
   font-size:15.5px;
   line-height:1.35;
   letter-spacing:-.012em;
+  text-wrap:balance;
+  overflow-wrap:break-word;
 }
 .card p,.thesis-card p,.roadmap p,.finding p,.callout p,.method-card p,.fx-panel p,.warning,.chart-note{
   color:#b8a68d;
   font-size:12.5px;
   line-height:1.67;
   text-wrap:pretty;
+  overflow-wrap:break-word;
 }
 .fact-number{
   color:#fff8e8;
@@ -671,4 +674,17 @@ main section{text-align:left}
   .display,.fact-number,.recommendation-main h3,.callout h3{color:#111!important;text-shadow:none!important}
   .lede,.card p,.thesis-card p,.roadmap p,.finding p,td{color:#444!important}
   .accent,.section-label,.kicker,.finding-num{color:#79581f!important}
+}
+/* Wrapping safeguards identified in the full text audit */
+.callout h3,.method-card h3,.recommendation-main h3{max-width:32ch;text-wrap:balance}
+.method-card p{max-width:96ch}
+.warning{max-width:110ch}
+.source-card h3{overflow-wrap:break-word;text-wrap:balance}
+td,th{word-break:normal;hyphens:none}
+th{max-width:32ch}
+.recommendation-side strong{overflow-wrap:break-word}
+@media(max-width:620px){
+  .callout h3,.method-card h3,.recommendation-main h3{max-width:none}
+  .warning,.method-card p{max-width:none}
+  th{max-width:none}
 }
