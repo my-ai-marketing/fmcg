@@ -683,139 +683,173 @@ th{max-width:32ch}
   .warning,.method-card p{max-width:none}
   th{max-width:none}
 }
-/* Accurate India map */
-.india-map-visual{min-width:0}
-.india-outline-wrap{
+
+/* India cost map — local vector asset, clean country silhouette */
+.india-map-card{
+  display:grid;
+  grid-template-columns:minmax(360px,.92fr) minmax(430px,1.08fr);
+  gap:34px;
+  align-items:center;
+  padding:30px;
+  border:1px solid rgba(242,207,122,.25);
+  border-radius:22px;
+  background:
+    radial-gradient(circle at 26% 42%,rgba(242,207,122,.08),transparent 28rem),
+    linear-gradient(135deg,rgba(201,154,60,.055),transparent 48%),
+    var(--surface);
+  overflow:hidden;
+}
+.india-map-panel{min-width:0}
+.india-map-stage{
   position:relative;
-  width:min(100%,760px);
-  aspect-ratio:1 / 1.04;
+  width:min(100%,560px);
+  aspect-ratio:667 / 777;
   margin:0 auto;
 }
 .india-outline-img{
   position:absolute;
-  left:22%;
-  top:3%;
-  width:56%;
-  height:92%;
+  inset:0;
+  width:100%;
+  height:100%;
   object-fit:contain;
-  opacity:.88;
-  filter:sepia(.7) saturate(.75) hue-rotate(350deg) brightness(.72) contrast(1.2);
-  mix-blend-mode:screen;
+  opacity:.95;
+  filter:invert(82%) sepia(32%) saturate(825%) hue-rotate(350deg) brightness(100%) contrast(91%);
   pointer-events:none;
   user-select:none;
 }
-.india-state-dot{
+.state-pin{
   position:absolute;
-  width:9px;
-  height:9px;
-  margin:-4.5px 0 0 -4.5px;
-  border-radius:50%;
-  background:var(--accent2);
-  box-shadow:0 0 0 4px rgba(12,9,6,.88),0 0 18px rgba(242,207,122,.75);
   z-index:3;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  transform:translate(-5px,-5px);
+  color:#f7e8c4;
+  font:700 9px/1 var(--body);
+  letter-spacing:.08em;
+  text-shadow:0 1px 8px #000;
 }
-.dot-gj{left:35.5%;top:44%}
-.dot-mh{left:42.5%;top:55%}
-.dot-tg{left:53.5%;top:60.5%}
-.dot-ap{left:57.5%;top:68%}
-.dot-ka{left:43.5%;top:69%}
-.dot-tn{left:49%;top:84%}
-
-.map-callout{
-  position:absolute;
-  z-index:4;
-  width:170px;
-  padding:10px 11px;
-  border:1px solid rgba(242,207,122,.18);
-  border-radius:12px;
-  background:rgba(15,11,7,.94);
-  box-shadow:0 12px 30px rgba(0,0,0,.22);
-  backdrop-filter:blur(10px);
+.state-pin i{
+  width:10px;
+  height:10px;
+  flex:0 0 10px;
+  border-radius:50%;
+  background:#f2cf7a;
+  border:2px solid #181008;
+  box-shadow:0 0 0 3px rgba(242,207,122,.16),0 0 17px rgba(242,207,122,.72);
 }
-.map-callout:after{
-  content:"";
-  position:absolute;
-  top:50%;
-  width:34px;
-  border-top:1px solid rgba(242,207,122,.38);
-}
-.map-callout b{
-  display:block;
-  margin-bottom:5px;
-  color:#fff4da;
-  font-size:10.5px;
-  line-height:1.25;
+.pin-gj{left:17%;top:47%}
+.pin-mh{left:29%;top:58%}
+.pin-ka{left:31%;top:70%}
+.pin-tg{left:42%;top:62%}
+.pin-ap{left:48%;top:69%}
+.pin-tn{left:38%;top:86%}
+.map-caption{
+  margin-top:10px;
+  color:#806f59;
+  font-size:9px;
+  line-height:1.45;
+  text-align:center;
   text-transform:uppercase;
-  letter-spacing:.07em;
+  letter-spacing:.09em;
 }
-.map-callout span{
+.india-cost-panel{min-width:0}
+.india-cost-list{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px;
+  margin-top:12px;
+}
+.india-cost-list article{
+  min-width:0;
+  padding:13px 14px;
+  border:1px solid rgba(242,207,122,.105);
+  border-radius:13px;
+  background:rgba(201,154,60,.018);
+}
+.india-cost-list article.focus-state{
+  border-color:rgba(242,207,122,.32);
+  background:linear-gradient(135deg,rgba(201,154,60,.10),rgba(201,154,60,.02));
+  box-shadow:0 0 20px rgba(201,154,60,.06);
+}
+.india-cost-list article>div{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:10px;
+  padding-bottom:7px;
+  margin-bottom:7px;
+  border-bottom:1px solid rgba(242,207,122,.07);
+}
+.india-cost-list b{
+  min-width:0;
+  color:#f4ead9;
+  font-size:11px;
+  line-height:1.3;
+}
+.india-cost-list small{
+  color:#947d5c;
+  font-size:8px;
+  letter-spacing:.1em;
+}
+.india-cost-list span{
   display:block;
-  color:#bba98f;
+  color:#a9957b;
   font-size:9.5px;
-  line-height:1.42;
-  white-space:nowrap;
+  line-height:1.48;
+  white-space:normal;
 }
-.callout-gj{left:0;top:31%}
-.callout-gj:after,.callout-mh:after,.callout-ka:after{right:-34px}
-.callout-mh{left:0;top:50%}
-.callout-ka{left:2%;top:70%}
-
-.callout-tg,.callout-ap,.callout-tn{right:0}
-.callout-tg{top:43%}
-.callout-ap{top:61%}
-.callout-tn{top:79%}
-.callout-tg:after,.callout-ap:after,.callout-tn:after{left:-34px}
-
-.india-map-mobile-values{display:none}
-
-@media(max-width:1180px){
-  .india-outline-wrap{width:min(100%,700px)}
-  .map-callout{width:156px}
-  .map-callout span{font-size:9px}
+.india-cost-panel .map-note{
+  margin-top:18px;
+  padding:18px 0 0;
+  border-top:1px solid var(--line);
+  border-left:0;
 }
-@media(max-width:760px){
-  .india-map-card{overflow:visible}
-  .india-outline-wrap{
-    width:100%;
-    aspect-ratio:1 / 1.08;
-    min-height:420px;
+.india-cost-panel .map-note p{
+  margin:8px 0 0;
+  color:#a9957b;
+  font-size:11.5px;
+  line-height:1.62;
+}
+.india-cost-panel .map-note strong{color:#e8d9bc}
+
+@media(max-width:1050px){
+  .india-map-card{
+    grid-template-columns:minmax(300px,.9fr) minmax(360px,1.1fr);
+    gap:24px;
+    padding:24px;
   }
-  .india-outline-img{
-    left:10%;
-    top:2%;
-    width:80%;
-    height:94%;
-  }
-  .india-state-dot{display:none}
-  .map-callout{display:none}
-  .india-map-mobile-values{
-    display:grid;
+  .india-cost-list article{padding:11px 12px}
+}
+@media(max-width:780px){
+  .india-map-card{
     grid-template-columns:1fr;
-    gap:8px;
-    margin-top:12px;
+    gap:22px;
+    padding:18px;
   }
-  .india-map-mobile-values article{
-    padding:11px 12px;
-    border:1px solid rgba(242,207,122,.13);
-    border-radius:11px;
-    background:rgba(201,154,60,.025);
-  }
-  .india-map-mobile-values b{
-    display:block;
-    color:#f5e7c9;
-    font-size:10px;
-    line-height:1.3;
-    text-transform:uppercase;
-    letter-spacing:.07em;
-    margin-bottom:4px;
-  }
-  .india-map-mobile-values span{
-    display:block;
-    color:#aa967d;
-    font-size:10.5px;
-    line-height:1.5;
-  }
+  .india-map-stage{width:min(100%,460px)}
+  .india-cost-list{grid-template-columns:1fr 1fr}
 }
-@media(max-width:420px){
-  .india-outline-wrap{min-height:360px}
+@media(max-width:520px){
+  .india-map-card{padding:14px;border-radius:16px}
+  .india-map-stage{width:min(92vw,390px)}
+  .state-pin{font-size:8px;gap:5px}
+  .state-pin i{width:8px;height:8px;flex-basis:8px}
+  .india-cost-list{grid-template-columns:1fr}
+  .india-cost-list article{
+    display:grid;
+    grid-template-columns:minmax(110px,.8fr) 1fr;
+    column-gap:12px;
+  }
+  .india-cost-list article>div{
+    grid-row:1 / span 4;
+    display:block;
+    padding:0 10px 0 0;
+    margin:0;
+    border-right:1px solid rgba(242,207,122,.07);
+    border-bottom:0;
+  }
+  .india-cost-list small{display:block;margin-top:4px}
+  .india-cost-list span{font-size:9.5px}
+  .map-caption{font-size:8px}
 }
