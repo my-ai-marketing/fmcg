@@ -1,0 +1,63 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Prepare production theme
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('index.html')
+          html = path.read_text(encoding='utf-8')
+          html = html.replace('<meta name="theme-color" content="#0a0a1a">','<meta name="theme-color" content="#0c0906">')
+
+          base = '<link rel="stylesheet" href="styles.css?v=20260917-1">'
+          layers = '\n'.join([
+              '<link rel="stylesheet" href="gold-theme.css?v=20260917-2">',
+              '<link rel="stylesheet" href="gold-consistency.css?v=20260917-2">',
+              '<link rel="stylesheet" href="gold-glow.css?v=20260917-2">',
+              '<link rel="stylesheet" href="study-nav.css?v=20260917-2">',
+              '<link rel="stylesheet" href="ecowas-layout-fix.css?v=20260917-2">',
+              '<link rel="stylesheet" href="typography-refine.css?v=20260917-3">',
+          ])
+          if 'typography-refine.css?v=20260917-3' not in html:
+              html = html.replace(base, base + '\n' + layers)
+
+          html = html.replace('app.js?v=20260917-1','app.js?v=20260917-2')
+          nav = '<script src="study-nav.js?v=20260917-2"></script>'
+          if nav not in html:
+              html = html.replace('</body>', nav + '\n</body>')
+
+          path.write_text(html, encoding='utf-8')
+          PY
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
